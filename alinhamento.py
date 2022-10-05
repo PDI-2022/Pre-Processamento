@@ -19,10 +19,10 @@ def alinhar(imagem_original):
 
 	# Prepara para alinhamento
 	# Ponto de busca da borda da malha situado no hemisferio norte da imagem
-	ponto_busca1 = [int(x*(1/3)), int(y*(2/11))]
+	ponto_busca1 = [int(x*(1/3)), int(y*(1/10))]
 
 	# Ponto situado no hemisferio sul da imagem
-	ponto_busca2 = [int(x*(2/3)), int(y*(2/11))]
+	ponto_busca2 = [int(x*(2/3)), int(y*(1/10))]
 
 	# Move o ponto de busca 1 a direita ate encontrar a borda da malha
 	while True:
