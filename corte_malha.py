@@ -8,6 +8,7 @@ def cortar_malha(imagem_original):
 	e retorna um vetor com 50 sementes individuais.
 	"""
 
+	# Alinha a imagem
 	imagem_alinhada = al.alinhar(imagem_original)
 
 	# Tamanho da imagem
@@ -35,7 +36,7 @@ def cortar_malha(imagem_original):
 	# Move o ponto de busca 1 a direita ate encontrar a borda da malha
 	while True:
 		if (imagem_cinza[ponto_medio1[0], ponto_medio1[1]] == 0):
-			# Sai do loop com coordenada x na borda da malha
+			# Sai do loop com coordenada y na borda da malha
 			break
 
 		# Caso pixel nao possua o valor desejado
@@ -44,7 +45,7 @@ def cortar_malha(imagem_original):
 	# Move o ponto de busca 2 a esquerda ate encontrar a borda da malha
 	while True:
 		if (imagem_cinza[ponto_medio2[0], ponto_medio2[1]] == 0):
-			# Sai do loop com coordenada x na borda da malha
+			# Sai do loop com coordenada y na borda da malha
 			break
 
 		# Caso pixel nao possua o valor desejado
@@ -74,10 +75,10 @@ def cortar_malha(imagem_original):
 	y_inicial = coords1[1]
 
 	# Medidas aproximadas dos lados das secoes
-	comp_malha = coords2[1] - coords1[1]
-	lado_comp = int(comp_malha/5)
-	alt_malha = ponto_medio3[0] - ponto_medio4[0]
-	lado_alt = int(alt_malha/10)
+	comp_malha = coords2[1] - coords1[1]		# Comprimento da malha
+	lado_comp = int(comp_malha/5)			# Comprimento da secao
+	alt_malha = ponto_medio3[0] - ponto_medio4[0]	# Altura da malha
+	lado_alt = int(alt_malha/10)			# Altura da secao
 
 	# Define vetor onde sera armazenada cada semente
 	semente = []
@@ -87,8 +88,8 @@ def cortar_malha(imagem_original):
 		for j in range(5):
 			semente.append(imagem_alinhada[(coords1[0] - lado_alt):coords1[0], coords1[1]:(coords1[1] + lado_comp)])
 			coords1[1] = coords1[1] + lado_comp
+		# Prepara para obter as imagens das sementes da linha acima
 		coords1[1] = y_inicial
 		coords1[0] = coords1[0] - lado_alt
 		
 	return semente
-
