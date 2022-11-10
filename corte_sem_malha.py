@@ -62,8 +62,8 @@ def corte_sem_malha(img):
     sementes = []
 
     # checando a posição relativa das duas metades da semente para fazer o corte
-    for linha in range(9, -1, -1):
-        for coluna in range(0, 10, 2):
+    for coluna in range(0, 10, 2):
+        for linha in range(9, -1, -1):
             if rect_m[linha][coluna][5]<rect_m[linha][coluna+1][5]:
                 sementes.append(img[rect_m[linha][coluna][1]-25:rect_m[linha][coluna+1][1]+rect_m[linha][coluna+1][3]+25 , rect_m[linha][coluna][0]-25:rect_m[linha][coluna+1][0]+rect_m[linha][coluna+1][2]+25])
             else:
