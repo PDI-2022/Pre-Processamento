@@ -1,7 +1,11 @@
 import cv2
 import numpy as np
+import alinhamento as al
 
 def corte(img):
+    # Alinha a imagem antes do corte
+    img = al.alinhar(img)
+
     # limiarizando os canais de cores
     used_threshold, thresholded_bgr_image = cv2.threshold(img, 130, 255, cv2.THRESH_BINARY)
     bt, gt, rt = cv2.split(thresholded_bgr_image)
