@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import alinhamento as al
 
-def corte(img):
+def cortar(img):
     # Alinha a imagem antes do corte
     img = al.alinhar(img)
 
